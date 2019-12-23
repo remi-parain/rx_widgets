@@ -50,7 +50,8 @@ class RxRaisedButton extends StatelessWidget {
       stream: rxCommand.canExecute,
       builder: (context, snapshot) {
         return RaisedButton(
-          onPressed: snapshot.data ? rxCommand : null,
+          onPressed: (snapshot.data != null && snapshot.data == true) ?
+              () => rxCommand(context) : null,
           onHighlightChanged: onHighlightChanged,
           textTheme: textTheme,
           textColor: textColor,
